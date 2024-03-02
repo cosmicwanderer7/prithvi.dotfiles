@@ -1,0 +1,51 @@
+.anydesk
+.bash_history
+.bash_logout
+.bash_profile
+.bashrc
+.bashrc.bak
+.bashrc.save
+ .cache
+.cargo
+ .config
+.config.bak
+.dmrc
+.gitconfig
+.github_config
+.gksu.lock
+.gnupg
+.gtkrc-2.0 ⇒ .dotfiles.theme/.gtkrc-2.0
+.gtkrc-2.0.bak
+.histfile
+.hyprland
+.icons ⇒ .dotfiles.theme/.icons
+.local
+.mozilla
+.npm
+.nx
+.pki
+.qt
+.redhat
+.scripts ⇒ .dotfiles.config/.scripts
+.ssh
+.themes ⇒ .dotfiles.theme/.themes
+.viminfo
+.wallpapers ⇒ .dotfiles.theme/.wallpapers
+.Xauthority
+.xsession-errors
+.xsession-errors.old
+.zcompdump
+.zshrc ⇒ .dotfiles.config/.zshrc
+.zshrc.bak
+.zshrc.zni
+Desktop
+Documents
+Downloads
+dracula.xml
+go
+in.lsp*
+Music
+Pictures
+Public
+Templates
+Videos
