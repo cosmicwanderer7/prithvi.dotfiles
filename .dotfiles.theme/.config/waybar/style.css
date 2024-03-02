@@ -1,7 +1,7 @@
 @import "./config.css";
 
-window#waybar {
-  color: #d8adb1;
+window {
+  color: #DEDDF3;
 }
 
 tooltip {
@@ -51,7 +51,7 @@ tooltip {
 #memory,
 #temperature {
   background: #191724;
-  color: #d8adb1;
+  color: #DEDDF3;
   border-color: #1f1d2e;
 }
 
@@ -81,6 +81,10 @@ tooltip {
 
 #custom-notification {
   color: #908caa;
+}
+
+#battery{
+  color: #31748f;
 }
 
 #battery.charging {
