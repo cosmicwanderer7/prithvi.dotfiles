@@ -1,0 +1,128 @@
+@define-color bar-bg rgba(0, 0, 0, 0);
+
+@define-color main-bg #26233a;
+@define-color main-fg #ebbcba;
+
+@define-color wb-act-bg #31748f;
+@define-color wb-act-fg #9ccfd8;
+
+@define-color wb-hvr-bg #eb6f92;
+@define-color wb-hvr-fg #f6c177;
+
+window {
+  font-family:
+    FantasqueSansM Nerd Font,
+    monospace;
+  font-size: 16pt;
+  background-color: @bar-bg;
+}
+
+button {
+  background-color: @main-bg;
+  outline-style: none;
+  border: none;
+  border-width: 0px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20%;
+  border-radius: 0px;
+  box-shadow: none;
+  text-shadow: none;
+  animation: gradient_f 20s ease-in infinite;
+}
+
+button:focus {
+  background-color: @wb-act-bg;
+  background-size: 30%;
+}
+
+button:hover {
+  background-color: @wb-act-bg;
+  background-size: 40%;
+  border-radius: 10px;
+  animation: gradient_f 20s ease-in infinite;
+  transition: all 0.5s cubic-bezier(0.55, 0, 0.28, 1.682);
+}
+
+button:hover#lock {
+  border-radius: 20px;
+  margin: 300px 0px 300px 200px;
+}
+
+button:hover#logout,
+button:hover#suspend,
+button:hover#shutdown,
+button:hover#reboot {
+  border-radius: 20px;
+  margin: 300px 0px 300px 0px;
+}
+
+button:hover#windows {
+  border-radius: 20px;
+  margin: 300px 200px 300px 0px;
+}
+
+button:focus {
+  background-color: #dddddd;
+  color: #242424;
+}
+
+#logout,
+#suspend,
+#shutdown,
+#reboot {
+  border-radius: 0px 0px 0px 0px;
+  margin: 350px 0px 350px 0px;
+}
+
+#lock {
+  background-image: image(url("./icons/lock_light.svg"));
+  border-radius: 20px 0px 0px 20px;
+  margin: 350px 0px 350px 200px;
+}
+
+#lock:focus {
+  background-image: image(url("./icons/lock_dark.svg"));
+}
+
+#logout {
+  background-image: image(url("./icons/logout_light.svg"));
+}
+
+#logout:focus {
+  background-image: image(url("./icons/logout_dark.svg"));
+}
+
+#suspend {
+  background-image: image(url("./icons/sleep_light.svg"));
+}
+
+#suspend:focus {
+  background-image: image(url("./icons/sleep_dark.svg"));
+}
+
+#shutdown {
+  background-image: image(url("./icons/poweroff_light.svg"));
+}
+
+#shutdown:focus {
+  background-image: image(url("./icons/poweroff_dark.svg"));
+}
+
+#reboot {
+  background-image: image(url("./icons/restart_light.svg"));
+}
+
+#reboot:focus {
+  background-image: image(url("./icons/restart_dark.svg"));
+}
+
+#windows {
+  background-image: image(url("./icons/windows_light.svg"));
+  border-radius: 0px 20px 20px 0px;
+  margin: 350px 200px 350px 0px;
+}
+
+#windows:focus {
+  background-image: image(url("./icons/windows_dark.svg"));
+}

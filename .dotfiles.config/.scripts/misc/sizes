@@ -1,0 +1,59 @@
+#!/bin/bash
+
+# Initialize an empty array to store the pairs
+pairs=()
+
+# Prompt the user for pairs of pixel values and maximum widths
+echo "Enter pairs of pixel values and maximum widths (e.g., 1920 1920), or enter an empty line to stop:"
+while true; do
+    read -r -p "> " input
+
+    # If the input is empty, stop
+    [ -z "$input" ] && break
+
+    # Add the input to the array
+    pairs+=("$input")
+done
+
+# Function to calculate vw value for a pair
+calculate_vw() {
+    local pixel_value=$1
+    local max_width=$2
+    awk -v val="$pixel_value" -v max="$max_width" 'BEGIN {printf "%.4f", (val / max) * 100}'
+}
+
+# Calculate total values for averaging
+total_pixel_value=0
+total_max_width=0
+
+# Loop through the provided pairs of pixel values and maximum widths
+for pair in "${pairs[@]}"; do
+    # Extract the pixel value and max width from the pair
+    pixel_value=$(echo "$pair" | cut -d ' ' -f 1)
+    max_width=$(echo "$pair" | cut -d ' ' -f 2)
+
+    # Calculate the equivalent vw value using the function
+    vw_value=$(calculate_vw "$pixel_value" "$max_width")
+
+    if [ "$1" = "--next" ]; then
+        # Output in the specified format for --next
+        sizes+="(max-width: ${max_width}px) ${vw_value}vw, "
+    else
+        # Normal output
+        echo "$pixel_value px is approximately $vw_value vw when max-width is $max_width px"
+    fi
+
+    # Update totals for averaging
+    total_pixel_value=$((total_pixel_value + pixel_value))
+    total_max_width=$((total_max_width + max_width))
+done
+
+# Calculate the average vw value
+average_vw_value=$(calculate_vw "$total_pixel_value" "$total_max_width")
+
+# If --next is provided, output the sizes in the specified format
+if [ "$1" = "--next" ]; then
+    # Remove the trailing comma and space from sizes
+    sizes="${sizes%, }"
+    echo "sizes=\"$sizes, ${average_vw_value}vw\""
+fi

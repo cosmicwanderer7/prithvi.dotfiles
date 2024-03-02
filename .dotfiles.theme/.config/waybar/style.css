@@ -1,0 +1,112 @@
+@import "./config.css";
+
+window#waybar {
+  color: #d8adb1;
+}
+
+tooltip {
+  background: #191724;
+  border-color: #1f1d2e;
+}
+
+#workspaces button {
+  color: #908caa;
+}
+
+#workspaces button.active {
+  color: #d8adb1;
+  background: #26233a;
+}
+
+#workspaces button.focused {
+  color: #a6adc8;
+  background: #eb6f92;
+}
+
+#workspaces button.urgent {
+  color: #11111b;
+  background: #9ccfd8;
+}
+
+#workspaces button:hover {
+  background: #26233a;
+  color: #d8adb1;
+}
+
+#custom-arch,
+#custom-updates,
+#custom-notification,
+#custom-weather,
+#custom-powermenu,
+#window,
+#clock,
+#battery,
+#pulseaudio,
+#pulseaudio.microphone,
+#network,
+#workspaces,
+#tray,
+#backlight,
+#cpu,
+#memory,
+#temperature {
+  background: #191724;
+  color: #d8adb1;
+  border-color: #1f1d2e;
+}
+
+#custom-arch {
+  color: #31748f;
+}
+
+#clock {
+  color: #f6c177;
+}
+
+#cpu {
+  color: #9ccfd8;
+}
+
+#memory {
+  color: #ebbcba;
+}
+
+#temperature {
+  color: #eb6f92;
+}
+
+#custom-updates {
+  color: #f6c177;
+}
+
+#custom-notification {
+  color: #908caa;
+}
+
+#battery.charging {
+  color: #9ccfd8;
+}
+
+#battery.discharging {
+  color: #d7827e;
+}
+
+#battery.discharging.warning {
+  color: #eb6f92;
+}
+
+#backlight {
+  color: #ebbcba;
+}
+
+#pulseaudio {
+  color: #c4a7e7;
+}
+
+#pulseaudio.microphone {
+  color: #9ccfd8;
+}
+
+#custom-powermenu {
+  color: #eb6f92;
+}
