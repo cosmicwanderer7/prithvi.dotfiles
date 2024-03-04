@@ -183,7 +183,7 @@
   },
   "custom/powermenu": {
     "format": "",
-    "on-click": "wlogout",
+    "on-click": "wlogout -b 6 -c 0 -r 0 -m 0 --protocol layer-shell",
     "tooltip": false
   }
 }
