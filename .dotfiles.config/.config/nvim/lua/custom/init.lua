@@ -17,4 +17,6 @@ opt.foldmethod = "indent"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 opt.foldenable = false
 
+-- JoosepAlviste/nvim-ts-context-commentstring
+-- to skip backwards compatibility routines and speed up loading
 g.skip_ts_context_commentstring_module = true

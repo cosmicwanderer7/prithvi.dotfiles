@@ -1,168 +1,173 @@
-local overrides = require "custom.configs.overrides"
+local overrides = require("custom.configs.overrides")
 
+---@type NvPluginSpec[]
 local plugins = {
-  {
-    -- "okuuva/auto-save.nvim",
-    -- cmd = "ASToggle",                         -- optional for lazy loading on command
-    -- event = { "InsertLeave", "TextChanged" }, -- optional for lazy loading on trigger events
-    -- opts = {
-    --   -- your config goes here
-    --   -- or just leave it empty :)
-    -- },
-  },
-  {
-    "neovim/nvim-lspconfig",
-    dependencies = {
-      -- format & linting
-      {
-        "jose-elias-alvarez/null-ls.nvim",
-        enabled = false,
-        config = function()
-          require "custom.configs.null-ls"
-        end,
-      },
-    },
-    config = function()
-      require "plugins.configs.lspconfig"
-      require "custom.configs.lspconfig"
-    end, -- Override to setup mason-lspconfig
-  },
+	{
+		"neovim/nvim-lspconfig",
+		config = function()
+			require("plugins.configs.lspconfig")
+			require("custom.configs.lspconfig")
+		end,
+	},
 
-  {
-    "nvimdev/lspsaga.nvim",
-    event = "LspAttach",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "nvim-tree/nvim-web-devicons",
-    },
-    config = function()
-      require("lspsaga").setup {}
-    end,
-  },
+	-- override plugin configs
+	{
+		"williamboman/mason.nvim",
+		opts = overrides.mason,
+	},
 
-  -- override plugin configs
-  {
-    "williamboman/mason.nvim",
-    opts = overrides.mason,
-  },
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		opts = overrides.blankline,
+	},
 
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    opts = overrides.blankline,
-  },
+	{
+		"nvim-treesitter/nvim-treesitter",
+		opts = overrides.treesitter,
+	},
 
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = overrides.treesitter,
-  },
+	{
+		"nvim-tree/nvim-tree.lua",
+		opts = overrides.nvimtree,
+	},
 
-  {
-    "nvim-tree/nvim-tree.lua",
-    opts = overrides.nvimtree,
-  },
+	{
+		"NvChad/nvim-colorizer.lua",
+		opts = overrides.colorizer,
+	},
 
-  {
-    "nvim-treesitter/nvim-treesitter-textobjects",
-    dependencies = { { "nvim-treesitter/nvim-treesitter" } },
-  },
+	{
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		dependencies = { { "nvim-treesitter/nvim-treesitter" } },
+	},
 
-  {
-    "kylechui/nvim-surround",
-    event = "VeryLazy",
-    config = function()
-      require("nvim-surround").setup {}
-    end,
-  },
+	-- formating
+	{
+		"stevearc/conform.nvim",
+		event = "BufWritePre",
+		config = function()
+			require("custom.configs.conform")
+		end,
+	},
 
-  {
-    "NvChad/nvim-colorizer.lua",
-    config = function()
-      require "custom.configs.colorizer"
-    end,
-  },
+	-- github copilot
+	{
+		"zbirenbaum/copilot.lua",
+		event = "InsertEnter",
+		opts = overrides.copilot,
+	},
 
-  {
-    "uga-rosa/ccc.nvim",
-    event = "BufEnter",
-    config = function()
-      require("ccc").setup {}
-    end,
-  },
+	-- copilot integration for nvim-cmp and copilot-cmp
+	{
+		"hrsh7th/nvim-cmp",
+		dependencies = {
+			{
+				"zbirenbaum/copilot-cmp",
+				config = function()
+					require("copilot_cmp").setup()
+				end,
+			},
+		},
+		opts = overrides.nvimcmp,
+	},
 
-  -- Greeting Screen
-  {
-    "glepnir/dashboard-nvim",
-    event = "VimEnter",
-    config = function()
-      require "custom.configs.dashboard"
-    end,
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-  },
+	{
+		"kylechui/nvim-surround",
+		event = "VeryLazy",
+		lazy = true,
+		config = function()
+			require("nvim-surround").setup({})
+		end,
+	},
 
-  -- Lazy Git
-  { "kdheepak/lazygit.nvim",              lazy = false },
+	-- project wide search and replace
+	{
+		"nvim-pack/nvim-spectre",
+		cmd = "Spectre",
+		opts = { open_cmd = "noswapfile vnew" },
+	},
 
-  -- scroll bar
-  { "dstein64/nvim-scrollview",           event = "BufEnter" },
+	-- colors
+	{
+		"uga-rosa/ccc.nvim",
+		cmd = "CccPick",
+		opts = overrides.ccc,
+	},
 
-  { "hrsh7th/cmp-nvim-lsp-signature-help" },
+	-- Lazy Git
+	{
+		"kdheepak/lazygit.nvim",
+		cmd = "LazyGit",
+	},
 
-  {
-    "numToStr/Comment.nvim",
-    config = function()
-      require "custom.configs.comment"
-    end,
-    dependencies = {
-      "JoosepAlviste/nvim-ts-context-commentstring",
-    },
-  },
+	-- Scrollbar
+	{
+		"dstein64/nvim-scrollview",
+		event = "BufEnter",
+		lazy = true,
+	},
 
-  { "mattn/emmet-vim",  ft = { "html", "css", "js", "jsx" }, cmd = "Emmet" },
+	{ "hrsh7th/cmp-nvim-lsp-signature-help" },
 
-  { "Fymyte/rasi.vim",  ft = { "rasi" } },
+	{
+		"numToStr/Comment.nvim",
+		config = function()
+			require("custom.configs.comment")
+		end,
+		dependencies = {
+			"JoosepAlviste/nvim-ts-context-commentstring",
+		},
+	},
 
-  { "elkowar/yuck.vim", ft = { "yuck" } },
+	{
+		"mattn/emmet-vim",
+		ft = {
+			"html",
+			"css",
+			"javascript",
+			"javascriptreact",
+			"typescript",
+			"typescriptreact",
+		},
+		cmd = "Emmet",
+	},
 
-  {
-    "luckasRanarison/tree-sitter-hyprlang",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
-  },
-  {
-    "folke/noice.nvim",
-    event = "VeryLazy",
-    opts = overrides.noice,
-    dependencies = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-      "MunifTanjim/nui.nvim",
-      -- OPTIONAL:
-      --   `nvim-notify` is only needed, if you want to use the notification view.
-      --   If not available, we use `mini` as the fallback
-    },
-  },
-  {
-    "theRealCarneiro/hyprland-vim-syntax",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
-    ft = "hypr",
-  },
-  {
-    "barrett-ruth/live-server.nvim",
-    build = "npm add -g live-server",
-    cmd = { "LiveServerStart", "LiveServerStop" },
-    config = true,
-  },
+	{
+		"Fymyte/rasi.vim",
+		ft = { "rasi" },
+	},
+
+	{
+		"elkowar/yuck.vim",
+		ft = { "yuck" },
+	},
+	{
+		"luckasRanarison/tree-sitter-hyprlang",
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+	},
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		opts = overrides.noice,
+		dependencies = {
+			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+			"MunifTanjim/nui.nvim",
+			-- OPTIONAL:
+			--   `nvim-notify` is only needed, if you want to use the notification view.
+			--   If not available, we use `mini` as the fallback
+		},
+	},
+	{
+		"theRealCarneiro/hyprland-vim-syntax",
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		ft = "hypr",
+	},
+	{
+		"barrett-ruth/live-server.nvim",
+		build = "npm add -g live-server",
+		cmd = { "LiveServerStart", "LiveServerStop" },
+		config = true,
+	},
 }
--- To make a plugin not be loaded
--- {
---   "NvChad/nvim-colorizer.lua",
---   enabled = false
--- },
-
--- All NvChad plugins are lazy-loaded by default
--- For a plugin to be loaded, you will need to set either `ft`, `cmd`, `keys`, `event`, or set `lazy = false`
--- If you want a plugin to load on startup, add `lazy = false` to a plugin spec, for example
--- {
---   "mg979/vim-visual-multi",
---   lazy = false,
--- }
 
 return plugins
