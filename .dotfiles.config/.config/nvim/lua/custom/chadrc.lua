@@ -1,21 +1,19 @@
----@type ChadrcConfig
+--@type ChadrcConfig
 local M = {}
 
 -- Path to overriding theme and highlights files
 local highlights = require("custom.highlights")
 
 M.ui = {
-  theme = "rosepine",
-  theme_toggle = { "rosepine", "one_light" },
+	theme = "rosepine",
+	theme_toggle = { "rosepine", "chadracula" },
 
-  hl_override = highlights.override,
-  hl_add = highlights.add,
+	hl_override = highlights.override,
+	hl_add = highlights.add,
 
-  nvdash = require("custom.configs.nvdash"),
-
-  statusline = {
-    theme = "minimal",
-  },
+	statusline = {
+		theme = "minimal",
+	},
 }
 
 M.plugins = "custom.plugins"

@@ -168,6 +168,15 @@ local plugins = {
 		cmd = { "LiveServerStart", "LiveServerStop" },
 		config = true,
 	},
+	-- Greeting Screen
+	{
+		"glepnir/dashboard-nvim",
+		event = "VimEnter",
+		config = function()
+			require("custom.configs.dashboard")
+		end,
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+	},
 }
 
 return plugins

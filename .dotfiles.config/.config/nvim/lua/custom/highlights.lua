@@ -6,24 +6,23 @@ local M = {}
 
 ---@type Base46HLGroupsList
 M.override = {
-  Comment = {
-    italic = true,
-  },
-
-  NvDashAscii = { fg = "white", bg = "none" },
-  NvDashButtons = { bg = "none" },
+	Comment = {
+		italic = true,
+	},
 }
 
 ---@type HLTable
 M.add = {
-  NvimTreeOpenedFolderName = { fg = "green", bold = true },
+	NvimTreeOpenedFolderName = { fg = "green", bold = true },
+}
 
-  IndentBlanklineIndent1 = { fg = "grey_fg2" },
-  IndentBlanklineIndent2 = { fg = "one_bg" },
-  IndentBlanklineIndent3 = { fg = "grey" },
-  IndentBlanklineIndent4 = { fg = "one_bg2" },
-  IndentBlanklineIndent5 = { fg = "grey_fg" },
-  IndentBlanklineIndent6 = { fg = "one_bg3" },
+M.add = {
+	IndentBlanklineIndent1 = { fg = "grey_fg2" },
+	IndentBlanklineIndent2 = { fg = "one_bg" },
+	IndentBlanklineIndent3 = { fg = "grey" },
+	IndentBlanklineIndent4 = { fg = "one_bg2" },
+	IndentBlanklineIndent5 = { fg = "grey_fg" },
+	IndentBlanklineIndent6 = { fg = "one_bg3" },
 }
 
 return M
