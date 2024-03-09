@@ -178,7 +178,7 @@
 
   "custom/arch": {
     "format": "",
-    "on-click": "exec /home/prithvi/.config/rofi/launchers/type-3/launcher.sh",
+    "on-click": "/home/prithvi/.config/rofi/colors.rasi",
     "tooltip": false
   },
   "custom/powermenu": {
