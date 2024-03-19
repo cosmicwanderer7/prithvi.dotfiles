@@ -34,7 +34,7 @@
       "(.*) - Brave": "$1  ",
       "(.*)Brave": "$1  ",
       "conf (.*)": "$1 ~  ",
-      "c": " ",
+      "c": "",
       "nvim(.*)": "$1 ~  ",
       "n (.*)": "$1 ~  ",
       "n": " ", 
@@ -178,7 +178,7 @@
 
   "custom/arch": {
     "format": "",
-    "on-click": "/home/prithvi/.config/rofi/colors.rasi",
+    "on-click": "killall rofi || rofi -show drun -theme ~/.config/rofi/config.rasi",
     "tooltip": false
   },
   "custom/powermenu": {
