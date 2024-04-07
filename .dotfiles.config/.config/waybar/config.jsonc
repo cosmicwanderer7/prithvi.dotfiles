@@ -31,8 +31,8 @@
     "rewrite": {
       "": "Cosmicwanderer",
       "server@server:(.*)": "$1  ",
-      "(.*) - Brave": "$1  ",
-      "(.*)Brave": "$1  ",
+      "(.*) - Brave": "$1  ",
+      "(.*)Brave": "$1  ",
       "conf (.*)": "$1 ~  ",
       "c": "",
       "nvim(.*)": "$1 ~  ",
