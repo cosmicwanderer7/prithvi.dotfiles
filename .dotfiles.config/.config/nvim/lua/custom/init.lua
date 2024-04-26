@@ -18,3 +18,5 @@ opt.foldexpr = "nvim_treesitter#foldexpr()"
 opt.foldenable = false
 
 g.skip_ts_context_commentstring_module = true
+
+require("custom")
