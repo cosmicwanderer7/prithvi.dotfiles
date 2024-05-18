@@ -1,12 +1,12 @@
-local overrides = require("custom.configs.overrides")
+local overrides = require("configs.overrides")
 
----@type NvPluginSpec[]
-local plugins = {
+return {
+	-- These are some examples, uncomment them if you want to see them work!
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
-			require("plugins.configs.lspconfig")
-			require("custom.configs.lspconfig")
+			require("nvchad.configs.lspconfig").defaults()
+			require("configs.lspconfig")
 		end,
 	},
 
@@ -46,27 +46,38 @@ local plugins = {
 		"stevearc/conform.nvim",
 		event = "BufWritePre",
 		config = function()
-			require("custom.configs.conform")
+			require("configs.conform")
 		end,
 	},
 
-	-- github copilot
+	--linting
 	{
-		"zbirenbaum/copilot.lua",
+		"mfussenegger/nvim-lint",
 		event = "InsertEnter",
-		opts = overrides.copilot,
+		config = function()
+			require("configs.lint")
+		end,
+		enabled = false,
 	},
+
+	-- github copilot
+	-- {
+	--   "zbirenbaum/copilot.lua",
+	--   enabled = false,
+	--   event = "InsertEnter",
+	--   opts = overrides.copilot,
+	-- },
 
 	-- copilot integration for nvim-cmp and copilot-cmp
 	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {
-			{
-				"zbirenbaum/copilot-cmp",
-				config = function()
-					require("copilot_cmp").setup()
-				end,
-			},
+			-- {
+			--   "zbirenbaum/copilot-cmp",
+			--   config = function()
+			--     require("copilot_cmp").setup()
+			--   end,
+			-- },
 		},
 		opts = overrides.nvimcmp,
 	},
@@ -112,13 +123,12 @@ local plugins = {
 	{
 		"numToStr/Comment.nvim",
 		config = function()
-			require("custom.configs.comment")
+			require("configs.comment")
 		end,
 		dependencies = {
 			"JoosepAlviste/nvim-ts-context-commentstring",
 		},
 	},
-
 	{
 		"mattn/emmet-vim",
 		ft = {
@@ -142,10 +152,6 @@ local plugins = {
 		ft = { "yuck" },
 	},
 	{
-		"luckasRanarison/tree-sitter-hyprlang",
-		dependencies = { "nvim-treesitter/nvim-treesitter" },
-	},
-	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
 		opts = overrides.noice,
@@ -157,11 +163,7 @@ local plugins = {
 			--   If not available, we use `mini` as the fallback
 		},
 	},
-	{
-		"theRealCarneiro/hyprland-vim-syntax",
-		dependencies = { "nvim-treesitter/nvim-treesitter" },
-		ft = "hypr",
-	},
+
 	{
 		"barrett-ruth/live-server.nvim",
 		build = "npm add -g live-server",
@@ -173,10 +175,8 @@ local plugins = {
 		"glepnir/dashboard-nvim",
 		event = "VimEnter",
 		config = function()
-			require("custom.configs.dashboard")
+			require("configs.dashboard")
 		end,
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
 }
-
-return plugins
