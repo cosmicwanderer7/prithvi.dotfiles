@@ -1,0 +1,49 @@
+#!/bin/sh
+
+cd ~ || exit
+
+# Log WLR errors and logs to the hyprland log. Recommended
+export HYPRLAND_LOG_WLR=1
+
+# Tell XWayland to use a cursor theme
+# export XCURSOR_THEME=Bibata-Modern-Ice
+
+# Set default mime types
+export EDITOR="nvim"
+export TERMINAL="kitty"
+export BROWSER="brave"
+
+# Set a cursor size
+# export XCURSOR_SIZE=24
+
+# Some default env vars.
+export XDG_SCREENSHOTS_DIR=~/Pictures/screenshots/
+export XDG_CURRENT_DESKTOP=Hyprland
+export XDG_SESSION_TYPE=wayland
+export XDG_SESSION_DESKTOP=Hyprland
+export GDK_BACKEND=wayland
+export QT_QPA_PLATFORM=wayland
+#export QT_STYLE_OVERRIDE=kvantum
+export QT_QPA_PLATFORMTHEME=qt5ct
+export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+export QT_AUTO_SCREEN_SCALE_FACTOR=1
+export MOZ_ENABLE_WAYLAND=1
+
+
+# Example IME Support: fcitx
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+export SDL_IM_MODULE=fcitx
+export GLFW_IM_MODULE=ibus
+
+# Nvidia
+export LIBVA_DRIVER_NAME=nvidia
+# export GBM_BACKEND=nvidia-drm
+export __GLX_VENDOR_LIBRARY_NAME=nvidia
+export WLR_NO_HARDWARE_CURSORS=1
+export WLR_DRM_NO_ATOMIC=1
+
+export NO_AT_BRIDGE=1
+
+exec Hyprland

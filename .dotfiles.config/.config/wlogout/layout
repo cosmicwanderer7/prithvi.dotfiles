@@ -12,7 +12,7 @@
 }
 {
     "label" : "shutdown",
-    "action" : "systemctl poweroff",
+    "action" : "/home/prithvi/.local/bin/poweroffdisk.sh",
     "text" : "Shutdown",
     "keybind" : "s"
 }

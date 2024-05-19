@@ -1,112 +1,189 @@
-@import "./config.css";
+* {
+  border: none;
+  border-radius: 0;
+  font-family: "JetBrainsMono Nerd Font";
+  font-weight: bold;
+  font-size: 14px;
+  min-height: 10px;
+}
 
 window#waybar {
-  color: #d8adb1;
+  background: rgba(21, 18, 27, 0);
+  color: #cdd6f4;
 }
 
 tooltip {
-  background: #191724;
-  border-color: #1f1d2e;
+  background: #1e1e2e;
+  border-radius: 10px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #11111b;
 }
 
 #workspaces button {
-  color: #908caa;
+  padding: 2px;
+  color: #313244;
+  margin-right: 2px;
+  
 }
 
 #workspaces button.active {
-  color: #d8adb1;
-  background: #26233a;
+  color: #a6adc8;
 }
 
 #workspaces button.focused {
   color: #a6adc8;
-  background: #eb6f92;
+  background: #eba0ac;
+  border-radius: 10px;
 }
 
 #workspaces button.urgent {
   color: #11111b;
-  background: #9ccfd8;
+  background: #a6e3a1;
+  border-radius: 10px;
 }
 
 #workspaces button:hover {
-  background: #26233a;
-  color: #d8adb1;
+  background: #11111b;
+  color: #cdd6f4;
+  border-radius: 10px;
 }
 
 #custom-arch,
-#custom-updates,
-#custom-notification,
+#custom-power_profile,
 #custom-weather,
-#custom-powermenu,
 #window,
 #clock,
 #battery,
 #pulseaudio,
-#pulseaudio.microphone,
 #network,
+#bluetooth,
+#custom-updates,
+#custom-notification,
 #workspaces,
 #tray,
 #backlight,
-#cpu,
-#memory,
-#temperature {
-  background: #191724;
-  color: #d8adb1;
-  border-color: #1f1d2e;
-}
+#custom-powermenu  
+{
+  background: #1e1e2e;
+  opacity: 0.85;
+  padding: 0px 10px;
+  margin: 4px 0px 0px 0px;
 
-#custom-arch {
-  color: #31748f;
-}
-
-#clock {
-  color: #f6c177;
-}
-
-#cpu {
-  color: #9ccfd8;
-}
-
-#memory {
-  color: #ebbcba;
-}
-
-#temperature {
-  color: #eb6f92;
-}
-
-#custom-updates {
-  color: #f6c177;
-}
-
-#custom-notification {
-  color: #908caa;
-}
-
-#battery.charging {
-  color: #9ccfd8;
-}
-
-#battery.discharging {
-  color: #d7827e;
-}
-
-#battery.discharging.warning {
-  color: #eb6f92;
+  
 }
 
 #backlight {
-  color: #ebbcba;
+  border-radius: 10px 0px 0px 10px;
+  border: 1px solid #B086E3;
+  border-right:none;
+}
+
+#tray {
+  border-radius: 10px;
+  margin-right: 10px;
+  border: 1px solid #B086E3;
+}
+
+#workspaces {
+  background: #1e1e2e;
+  border-radius: 10px;
+  margin-left: 10px;
+  padding-right: 2px;
+  padding-left: 2px;
+  border: 1px solid #B086E3;
+}
+
+#window {
+  border-radius: 10px;
+  border: 1px solid #B086E3;
+  margin-left:10px ;
+  
+}
+
+
+#clock {
+  color: #ff8dcd;
+  border-radius: 10px 0px 0px 10px;
+  margin-left: 10px;
+  border-right: 0px;
+  border: 1px solid #B086E3;
+  border-right:none;
+}
+
+#custom-arch {
+  color: #8be9fd;
+  border-radius: 10px 10px 10px 10px;
+  margin-left: 10px;
+  border-right: 0px;
+   padding: 0px 13px 0px 8px;
+   border: 1px solid #B086E3;
+}
+#custom-powermenu {
+  color: #ff2929;
+  border-radius: 10px 10px 10px 10px;
+  margin-right: 10px;
+  border-left: 1px;
+  font-size: 14.2px;
+   padding: 0px 13px 0px 12px;
+   border: 1px solid #B086E3;
+}
+#network {
+  color: #f9e2af;
+  border-radius: 10px 0px 0px 10px;
+  border-left: 0px;
+  border-right: 0px;
+}
+
+#bluetooth {
+  color: #89b4fa;
+  border-radius: 0px 10px 10px 0px;
+  margin-right: 10px;
 }
 
 #pulseaudio {
-  color: #c4a7e7;
+  color: #89b4fa;
+  border: 1px solid #B086E3;
+  border-left: none;
+  border-right: none ;
 }
 
 #pulseaudio.microphone {
-  color: #9ccfd8;
+  color: #bd93f9;
+  border-radius: 0px 10px 10px 0px;
+  border-left: none;
+  margin-right: 10px;
+  border-right: 1px solid #B086E3;
 }
 
-#custom-powermenu {
-  color: #eb6f92;
+#battery {
+  color: #50fa7b;
+  border-radius: 10px 10px 10px 10px;
+  margin-right: 10px;
+  border: 1px solid #B086E3;
+}
+
+#custom-updates {
+  color: #ffb86c;
+  border-radius: 10px 0px 0px 10px;
+  border: 1px solid #B086E3;
+  border-right:none ;
+
+}
+
+#custom-notification {
+  color: #6272A4;
+  border-radius: 0px 10px 10px 0px;
+  margin-right: 10px;
+  border: 1px solid #B086E3;
+  border-left: none;
+}
+
+#custom-weather {
+  border-radius: 0px 10px 10px 0px;
+
+  margin-left: 0px;
+  border-top: 1px solid #B086E3;
+  border-right: 1px solid #B086E3;
+  border-bottom: 1px solid #B086E3; 
 }
